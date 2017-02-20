@@ -50,7 +50,7 @@ urlcolor=black
   basicstyle=\footnotesize,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
   breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
+%   captionpos=b,                    % sets the caption-position to bottom
   commentstyle=\color{mygreen},    % comment style
   deletekeywords={...},            % if you want to delete keywords from the given language
   escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
@@ -70,7 +70,9 @@ urlcolor=black
   stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
   stringstyle=\color{mymauve},     % string literal style
   tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  aboveskip=-10pt,
+  belowskip=-10pt
 }
 
 \begin{document}
@@ -80,14 +82,18 @@ urlcolor=black
 \subsection*{Aims}
 \begin{itemize}
  \item practice writing simple functions in python that perform numerical computation and string operations
- \item learn how to test python functions using \emph{nosetools}
+ \item learn how to test python functions using the \emph{nosetools} package
 \end{itemize}
 
 
-\subsection*{Problem 1}
+\subsection*{Problem 1 - Quadratic}
 
+Write the following functions in a file called $\textbf{t1\_sol.py}$ under folder task1.
 \begin{itemize}
- \item Write a function $\textbf{quad}(a, b, c, x)$ that takes as input three floats $a$, $b$, $c$, a value $x$ and returns the value of the quadratic function $f(x) = ax^2 +bx +c$. For example, $quad(1,2,0,1) = 5$ and $quad(1,0,0,1) = 1$. 
+ \item Write a function $\textbf{quad}(a, b, c, x)$ that takes as input three floats $a$, $b$, $c$, a value $x$ and returns the value of the quadratic function $f(x) = ax^2 +bx +c$. For example, $quad(1,2,0,1) = 5$ and $quad(1,0,0,1) = 1$. File \textbf{t1\_tests.py} contains some unit tests for all the functions. After implementing the function, you can test it using 
+  \begin{lstlisting}
+   nosetests t1_tests.py:test_quad
+  \end{lstlisting}
  \item Write a function $\textbf{quadIsZero}(a, b, c, x)$ that takes similar arguments as $\textbf{quad}$, calls $\textbf{quad}$ and returns True if the quadratic expression evaluates to zero, otherwise False (return type is boolean). For example, $quadIsZero(1,2,0,1) = False$ and $quad(1,0,-1,1) = True$. 
  \item Write a function $\textbf{quadSolver}(a, b, c, x)$ that takes similar arguments as $\textbf{quad}$ and returns the two roots of a quadratic equation with coefficients $a$,$b$,$c$. The roots value can be calculated using the following formula:
  $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
@@ -96,47 +102,101 @@ urlcolor=black
   \item if $\sqrt{b^2 - 4ac} \ge 0 $ then the roots are real, in which case return them as a tuple $(x_1,x_2)$ where $x_1 < x_2$. 
   \item if $\sqrt{b^2 - 4ac} < 0 $ then the roots are imaginary, in which case return NaN instead of the tuple.
  \end{itemize}
+ HELPER: for sqrt, you need to import the numpy module and use \textbf{np.sqrt()}. This can be done as follows:
+   \begin{lstlisting}
+   import numpy as np # add this once at beginning of the file
+   
+   np.sqrt(2)
+  \end{lstlisting}
+ \item Add 3 more unit tests for each function in \textbf{t1\_tests.py} following the other examples.
 \end{itemize}
 
-\subsection*{Problem 2}
+\subsection*{Problem 2 - Strings}
 
 \begin{itemize}
-  \item write a function $\textbf{toUpperCase(s)}$ which takes a lowercase string $s$ and converts the letters at the beginning of every word to uppercase. For example: 
+  \item write a function $\textbf{toUpperCase(sentence)}$ which takes a lowercase string $s$ and converts the letters at the beginning of every word to uppercase. For example: 
   \begin{lstlisting}
-  toUpperCase('a very simple example') = 'A Very Simple Example'
+  toUpperCase('ana are mere si pere') = 'Ana Are Mere Si Pere'
   \end{lstlisting}   
   Perform this in two ways:
   \begin{itemize}
    \item Perform a for loop ever every character:
      \begin{lstlisting}
-for char in s:
+for char in sentence:
   # check if letter is at the beginning of the word. This requires checking a boolean variable isAtBegWord at every loop
     # if letter is at beginning of word, then transform it to uppercase. 
     
   # if the current character is a space ' ', set the boolean variable isAtBegWord to True, else False.
   \end{lstlisting}  
-  \item Use the \textbf{str.split} function with delimiter ' ', which splits the string into words, then update the first letter of each word and assemble the words back together using \textbf{str.join}(wordList). Check on google the documentation of these two functions. Call this function $\textbf{toUpperCase2}$
-  
+  \item Use the \textbf{str.split} function with delimiter ' ', which splits the string into words and returns the list of words (without spaces). Then update the first letter of each word and assemble the words back together using \textbf{str.join}(wordList). Check on google the documentation of these two functions. HINT: You can concatenate two strings with '+' (i.e. str1 + str2) and you can concatenate two lists of words also with '+' (list1 + list2). Call this function $\textbf{toUpperCase2}$
+  \item Add 3 more unit tests in function \textbf{t1\_tests.py:test\_toUpperCase}. Test them using a similar sintax to problem 1.
   \end{itemize}
 
 
 \end{itemize}
 
 
+\section*{Recursion}
+
+Recursion is a powerful tool in programming, which can provide simple implementations to some problems. Our aim here is to practice implementing recursive functions.
+
+
+\subsection*{Problem 3 - Prime numbers}
+
+Number factorisation plays a very important role in computer cryptography, as in the famous RSA algorithm. These cryptographic systems ensure the security of our online data and internet transactions. Here, we will implement some basic prime number factorisation functions using recursion. 
+
+\begin{itemize}
+ \item Write a function \textbf{isPrime(n)} which takes an integer $n$ and returns True if n is prime, else False. You can assume the input $n \ge 2$. For example, isPrime(2) = True, isPrime(4) = False. 
+ \item Implement a function \textbf{nextPrime(n)} which returns the smallest prime higher than \textbf{n}. HINT: use recursion .. no for/while loops required.
+ \item Write a function \textbf{primeFactors(n)} which for a given $n$ returns the list of its prime factors, sorted in ascending order. For example, primeFactors(66556544) = [2 2 2 2 2 2 2 19 27367], primeFactors (3**3 * 2**2) = [2 2 3 3 3]. HINT: first write a helper function \textbf{primeFactorsHelper(n,k)} which checks if n is divisible by k, and if true then divides n by k and recursively calls itself, otherwise tries the next prime number (again with recursion).  
+\end{itemize}
+
+\subsection*{Problem 4  - Fibonnaci numbers}
+
+Extra: 
+\begin{itemize}
+ \item Implement a recursive function $fib(n)$ which returns the n-th fibonnaci number. The Fibbonaci sequence is defined as:
+$$\begin{cases}
+fib(1) = 1\\
+fib(2) = 1\\
+fib(n) = fib(n-1) + fib(n-2), \forall n \ge 3
+\end{cases} $$
+ \item Implementing the same function iteratively, i.e. using a for loop instead of recursion. Call this function $fib2()$
+ \item Cross-check the output of the two functions. That is, add a unit\_test function that loops over a range of numbers $n \in [1 .. 100]$ and checks if $fib(n) = fib2(n)$.
+\end{itemize}
+
+\subsection*{Problem 5  - Towers of Hanoi}
+
+There is an ancient legend that in Hanoi there is an elegantly-crafted cosmic puzzle
+which controls the birth and death of the world. It consists of three pegs, which we
+will call ‘A’, ‘B’ and ‘C’, and (initially, at the beginning of time) a tower of 64 disks
+with holes in the middle, stacked up on peg A. The disks are all different sizes, and are
+stacked in order of size, largest at the bottom, smallest at the top. A team of untiring
+priests works endlessly in shifts, moving one disk at a time, from one peg to another,
+with the aim of transferring the entire tower from its original peg A to peg C. But
+they must at all times obey the sacred rule, which is that a larger disk can never be
+placed on top of a smaller disk. When they complete their task time will end and the
+world will crumble to dust. Fortunately finishing the puzzle will take a long time.
+
+Try the Towers of Hanoi puzzle with some coins or scraps of paper to represent the
+disks. There can be any number of disks, but there must be exactly three pegs. Four
+disks is a good number to practise with.
+
+Write a Python function \textbf{hanoi(n)} which takes a non-negative
+integer n, and then solves the Towers of Hanoi puzzle recursively, using the algorithm
+given below. For example, if there are two disks, hanoi(2), your program should return a list of strings (representing disk moves):
+\big['Move disk 1 from peg A to peg B', 'Move disk 2 from peg A to peg C', 'Move disk 1 from peg B to peg C'\big]\\
+
+If there are zero disks to be moved, do nothing. To move $N > 0$ disks from peg X
+to peg Z via “spare” peg Y, then:
+\begin{itemize}
+ \item move n-1 disks from X to Y, with Z playing the role of spare
+ \item move disk n from X to Z
+ \item move n-1 disks from Y to Z, with X playing the role of spare
+\end{itemize}
+
+
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
