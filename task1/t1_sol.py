@@ -63,10 +63,14 @@ def fib(n):
     return fib(n-1) + fib(n-2)
 
 
-def hanoi(n):
-  if n == 0:
-    return
-  else:
+# def hanoi(n):
+#
+#
+# def hanoiHelper(X,Y,Z):
+#
+#   if n == 0:
+#     return
+#   else:
 
 
 # print(quad(1,2,0,1))

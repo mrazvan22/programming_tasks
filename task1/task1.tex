@@ -90,7 +90,7 @@ urlcolor=black
 
 Write the following functions in a file called $\textbf{t1\_sol.py}$ under folder task1.
 \begin{itemize}
- \item Write a function $\textbf{quad}(a, b, c, x)$ that takes as input three floats $a$, $b$, $c$, a value $x$ and returns the value of the quadratic function $f(x) = ax^2 +bx +c$. For example, $quad(1,2,0,1) = 5$ and $quad(1,0,0,1) = 1$. File \textbf{t1\_tests.py} contains some unit tests for all the functions. After implementing the function, you can test it using 
+ \item Write a function $\textbf{quad}(a, b, c, x)$ that takes as input three floats $a$, $b$, $c$, a value $x$ and returns the value of the quadratic function $f(x) = ax^2 +bx +c$. For example, $quad(1,2,0,1) = 5$ and $quad(1,0,0,1) = 1$. File \textbf{t1\_tests.py} contains some unit tests for all the functions. After implementing the function, you can test it by typing the following command in the Linux terminal (open terminal with Ctrl+Alt+T):
   \begin{lstlisting}
    nosetests t1_tests.py:test_quad
   \end{lstlisting}
@@ -149,11 +149,11 @@ Number factorisation plays a very important role in computer cryptography, as in
  \item Write a function \textbf{isPrime(n)} which takes an integer $n$ and returns True if n is prime, else False. You can assume the input $n \ge 2$. For example, isPrime(2) = True, isPrime(4) = False. 
  \item Implement a function \textbf{nextPrime(n)} which returns the smallest prime higher than \textbf{n}. HINT: use recursion .. no for/while loops required.
  \item Write a function \textbf{primeFactors(n)} which for a given $n$ returns the list of its prime factors, sorted in ascending order. For example, primeFactors(66556544) = [2 2 2 2 2 2 2 19 27367], primeFactors (3**3 * 2**2) = [2 2 3 3 3]. HINT: first write a helper function \textbf{primeFactorsHelper(n,k)} which checks if n is divisible by k, and if true then divides n by k and recursively calls itself, otherwise tries the next prime number (again with recursion).  
+ \item Add three more unit tests for each function above.
 \end{itemize}
 
 \subsection*{Problem 4  - Fibonnaci numbers}
 
-Extra: 
 \begin{itemize}
  \item Implement a recursive function $fib(n)$ which returns the n-th fibonnaci number. The Fibbonaci sequence is defined as:
 $$\begin{cases}
@@ -161,8 +161,8 @@ fib(1) = 1\\
 fib(2) = 1\\
 fib(n) = fib(n-1) + fib(n-2), \forall n \ge 3
 \end{cases} $$
- \item Implementing the same function iteratively, i.e. using a for loop instead of recursion. Call this function $fib2()$
- \item Cross-check the output of the two functions. That is, add a unit\_test function that loops over a range of numbers $n \in [1 .. 100]$ and checks if $fib(n) = fib2(n)$.
+ \item Implementing the same function iteratively, i.e. using a for loop instead of recursion. Call this function $fib2(n)$
+ \item Cross-check the output of the two functions. That is, write a unit\_test function \textbf{test\_fibCrossCheck()} in \textbf{t1\_tests.py} that loops over a range of numbers $n \in [1 .. 100]$ and checks if $fib(n) = fib2(n)$.
 \end{itemize}
 
 \subsection*{Problem 5  - Towers of Hanoi}
