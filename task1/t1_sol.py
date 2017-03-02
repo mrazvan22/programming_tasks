@@ -63,15 +63,25 @@ def fib(n):
     return fib(n-1) + fib(n-2)
 
 
-# def hanoi(n):
-#
-#
-# def hanoiHelper(X,Y,Z):
-#
-#   if n == 0:
-#     return
-#   else:
+def hanoi(n):
+  return hanoiHelper(n, 'A', 'B', 'C')
 
+def hanoiHelper(n,X,Y,Z):
+  '''
+  n - number of disks to move at current iteration
+  X - source peg
+  Y - intermediary peg
+  Z - destination peg
+
+  '''
+
+  if n == 0:
+    return []
+  else:
+    return hanoiHelper(n-1,X,Z,Y) + ['Move disk %d from %s to %s' % (n,X,Z)]  + hanoiHelper(n-1,Y,X,Z)
+    
+print(hanoi(3))
+print(adass)
 
 # print(quad(1,2,0,1))
 # print(quad(1,0,0,1))
@@ -80,8 +90,8 @@ def fib(n):
 # print(quadIsZero(1,2,0,1))
 # print(quadIsZero(1,0,-1,1))
 
-print(quadSolver(1, 2, 0), quadSolver(2, -4, 0), quadSolver(-2, -5, 4))
+#print(quadSolver(1, 2, 0), quadSolver(2, -4, 0), quadSolver(-2, -5, 4))
 
-print(quadSolver(2, 4, 2))
+#print(quadSolver(2, 4, 2))
 
 print(toUpperCase('a very simple example'))
