@@ -81,7 +81,7 @@ def hanoiHelper(n,X,Y,Z):
     return hanoiHelper(n-1,X,Z,Y) + ['Move disk %d from %s to %s' % (n,X,Z)]  + hanoiHelper(n-1,Y,X,Z)
     
 print(hanoi(3))
-print(adass)
+# print(adass)
 
 # print(quad(1,2,0,1))
 # print(quad(1,0,0,1))

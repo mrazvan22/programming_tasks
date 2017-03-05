@@ -95,12 +95,12 @@ Write the following functions in a file called $\textbf{t1\_sol.py}$ under folde
    nosetests t1_tests.py:test_quad
   \end{lstlisting}
  \item Write a function $\textbf{quadIsZero}(a, b, c, x)$ that takes similar arguments as $\textbf{quad}$, calls $\textbf{quad}$ and returns True if the quadratic expression evaluates to zero, otherwise False (return type is boolean). For example, $quadIsZero(1,2,0,1) = False$ and $quad(1,0,-1,1) = True$. 
- \item Write a function $\textbf{quadSolver}(a, b, c, x)$ that takes similar arguments as $\textbf{quad}$ and returns the two roots of a quadratic equation with coefficients $a$,$b$,$c$. The roots value can be calculated using the following formula:
+ \item Write a function $\textbf{quadSolver}(a, b, c)$ that takes similar arguments as $\textbf{quad}$ and returns the two roots of a quadratic equation with coefficients $a$,$b$,$c$. The roots value can be calculated using the following formula:
  $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
  There are two main cases:
  \begin{itemize}
-  \item if $\sqrt{b^2 - 4ac} \ge 0 $ then the roots are real, in which case return them as a tuple $(x_1,x_2)$ where $x_1 < x_2$. 
-  \item if $\sqrt{b^2 - 4ac} < 0 $ then the roots are imaginary, in which case return NaN instead of the tuple.
+  \item if $b^2 - 4ac \ge 0 $ then the roots are real, in which case return them as a tuple $(x_1,x_2)$ where $x_1 < x_2$. 
+  \item if $b^2 - 4ac < 0 $ then the roots are imaginary, in which case return \textbf{None} instead of the tuple.
  \end{itemize}
  HELPER: for sqrt, you need to import the numpy module and use \textbf{np.sqrt()}. This can be done as follows:
    \begin{lstlisting}
@@ -194,6 +194,8 @@ to peg Z via “spare” peg Y, then:
  \item move disk n from X to Z
  \item move n-1 disks from Y to Z, with X playing the role of spare
 \end{itemize}
+
+HINT: define a helper function \textbf{hanoiHelper(m,X,Y,Z)} which moves m disks from peg X to peg Z via peg Y.
 
 
 \end{document}
