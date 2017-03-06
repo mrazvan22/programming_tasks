@@ -206,7 +206,12 @@ print(m) # try printing the matrix
  \item Write a function \textbf{printMatrix(m)} that takes a 4x2 matrix m and loops through each element of m and prints it on the screen. Do not use any other higher-level functions such as print(). You need to loop through each element m[i,j] (requires two nested for-loops, one until 4 and the other until 2) and print it, along with an extra space character. At the end of each row, don't forget to print a newline character. 
  
  \item Write a function \textbf{addMatrix(m,n)} that takes two numpy matrices m and n and returns m+n. Do not use the high-level operator '+'. Instead, create a new numpy matrix p and loop over every element p[i,j] of the matrix p (requires two nested for-loops) and assign it the correct value. You can assume m,n have size 4x2.
- Test your function using the matrixes m1 and m2 defined above.
+ Test your function using the matrixes m1 and m2 defined above. For example:
+ 
+ $$ addMatrix(m1,m2) = \left[ {\begin{array}{cccc}
+   2 & 4 & 9 & 10\\     
+   8 & 10 & 14 & 1\\
+   \end{array} } \right] $$
  
  \item Write a function \textbf{transposeMatrix(m)} which computes and returns $m^T$, the transpose of matrix m.  The transpose of a matrix m with dimensions AxB is a matrix $m^T$ with dimensions BxA, such that $m^T[i,j] = m[j,i]$ (elements are flipped around the diagonal). You can assume m has size 4x2. For example, for matrix m1 defined above, it's transpose is:
     \[ transposeMatrix(m1)= \left[ {\begin{array}{cccc}
@@ -257,7 +262,9 @@ n = np.zeros(shapeM, float) # create a matrix n of the same size as m
  
 \end{itemize}
 
+\subsection*{Problem 3 - Triangles and Magic Squares}
 
+Implement all the problems from the \textbf{magic\_squares.pdf} specification. The specification has been originally written for Java, but we can easily adapt it for Python (or C++). I have written the function stubs in the file called \textbf{magic.py}. Fill in the functions with the required code according to the instructions given in the pdf speccification. 
 
 
 \end{document}
