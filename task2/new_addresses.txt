@@ -1,0 +1,6 @@
+Radu 24 Str_Corvin_nr_7 programator
+Maria 40 Str_Corvin_nr_7 economist
+George 18 Str_Grozavesti_nr_7 student
+Ana 24 Str_Maslinilor_nr_3 lingvist
+Adriana 25 Str_Maniu_nr_3 medic
+Ionel 20 Str_Bratianu_nr_4 consultant
